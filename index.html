@@ -23,8 +23,13 @@
                     id="animated-asset"
                     src="assets/asset.glb"
                 ></a-asset-item>
+                <audio id="bgm" src="assets/winter.mp3">
+                </audio>
             </a-assets>
-
+            <a-sound src="#bgm"
+             autoplay="true" loop="true">
+            </a-sound>
+            
             <a-marker
                 id="animated-marker"
                 type="pattern"
@@ -47,7 +52,5 @@
 
             <a-entity camera></a-entity>
         </a-scene>
-        <audio src="assets/winter.mp3" autoplay loop>
-</audio>
     </body>
 </html>
