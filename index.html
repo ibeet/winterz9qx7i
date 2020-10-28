@@ -24,7 +24,7 @@
                     id="animated-asset"
                     src="assets/asset.glb"
                 ></a-asset-item>
-                <audio id="sound" src="audio.mp3" preload="auto"></audio>
+                <audio id="sound" src="assets/winter.mp3" preload="auto"></audio>
             </a-assets>
             
             <a-marker
@@ -37,8 +37,6 @@
                 cursor="fuse: false; rayOrigin: mouse;"
                 id="markerA"
             >
-                 <a-box position='0 0.5 0' material='color: black;' soundhandler> 
-                </a-box>
                 <a-entity
                     id="bowser-model"
                     scale="1.3334699223961899 1.3334699223961899 1.3334699223961899"
@@ -46,6 +44,7 @@
                     gltf-model="#animated-asset"
                     class="clickable"
                     gesture-handler
+                    soundhandler
                 ></a-entity>
             </a-marker>
             <a-entity sound="src: #sound" autoplay="false"></a-entity>
