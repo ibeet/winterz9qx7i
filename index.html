@@ -15,20 +15,17 @@
             renderer="logarithmicDepthBuffer: true;"
             arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
             id="scene"
-            embedded
+            embedded arjs='sourceType: webcam; debugUIEnabled: false;';
             gesture-detector
         >
+            
             <a-assets>
                 <a-asset-item
                     id="animated-asset"
                     src="assets/asset.glb"
                 ></a-asset-item>
-                <audio id="bgm" src="assets/winter.mp3">
-                </audio>
+                <audio id="sound" src="audio.mp3" preload="auto"></audio>
             </a-assets>
-            <a-sound src="#bgm"
-             autoplay="true" loop="true">
-            </a-sound>
             
             <a-marker
                 id="animated-marker"
@@ -40,6 +37,8 @@
                 cursor="fuse: false; rayOrigin: mouse;"
                 id="markerA"
             >
+                 <a-box position='0 0.5 0' material='color: black;' soundhandler> 
+                </a-box>
                 <a-entity
                     id="bowser-model"
                     scale="1.3334699223961899 1.3334699223961899 1.3334699223961899"
@@ -49,8 +48,23 @@
                     gesture-handler
                 ></a-entity>
             </a-marker>
+            <a-entity sound="src: #sound" autoplay="false"></a-entity>
 
             <a-entity camera></a-entity>
         </a-scene>
+        <script>
+AFRAME.registerComponent('soundhandler', {
+    tick: function () {
+           var entity = document.querySelector('[sound]');
+         if (document.querySelector('a-marker').object3D.visible == true) {
+            entity.components.sound.playSound();
+        } else {
+            entity.components.sound.pauseSound();
+        }
+
+     }
+});
+</script>
     </body>
 </html>
+
